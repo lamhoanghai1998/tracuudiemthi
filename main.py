@@ -14,3 +14,10 @@ def tra_cuu_diem(SBD: str = Query(..., description="Số báo danh")):
         return {"success": True, "data": result}
     else:
         return {"success": False, "message": "Không tìm thấy thí sinh."}
+
+try:
+    with open('all_data_merged.json', encoding='utf-8') as f:
+        data = json.load(f)
+except FileNotFoundError:
+    data = []
+    print("File JSON không tồn tại hoặc chưa được tải lên.")
